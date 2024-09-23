@@ -22,9 +22,7 @@
                 <div class="card-header">
                     <h4>Product Details
                         <a href="{{url('products/create')}}" class="btn btn-primary float-end">Add Product</a>
-{{--                        <a href="{{url('products/show')}}" class="btn btn-warning float-end me-2 ">Show Deleted Details</a>--}}
-                        <a href="{{Route('products.delete.all')}}" class="btn btn-danger float-end me-2 ">Delete All</a>
-{{--                        <a href="{{Route('products.delete.all.truncate')}}" class="btn btn-secondary float-end me-2 ">Delete All Truncate</a>--}}
+{{--                        <a href="{{Route('products.delete.all')}}" class="btn btn-danger float-end me-2 ">Delete All</a>--}}
                     </h4>
                 </div>
                 <div class="card-body">

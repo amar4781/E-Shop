@@ -117,28 +117,39 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
+        $product = Product::findOrFail($id);
+
+        // حذف الصور المرتبطة بالمنتج من التخزين
+        foreach ($product->images as $image) {
+            Storage::disk('public')->delete($image->image_path);
+            $image->delete();
+        }
+
+        // حذف المنتج
+        $product->delete();
+
         return redirect()->to('products');
     }
+
     public function view($id)
     {
         $product = Product::findorFail($id);
         return view('products.view',compact('product'));
     }
 
-    public function deleteAll()
-    {
-        $products = Product::all();
-        foreach ($products as $product) {
-            // حذف الصور المرتبطة بالمنتج من التخزين
-            foreach ($product->images as $image) {
-                Storage::disk('public')->delete($image->image_path);
-                $image->delete();
-            }
-
-            // حذف المنتج
-            $product->delete();
-        }
-        return redirect()->back();
-    }
+//    public function deleteAll()
+//    {
+//        $products = Product::all();
+//        foreach ($products as $product) {
+//            // حذف الصور المرتبطة بالمنتج من التخزين
+//            foreach ($product->images as $image) {
+//                Storage::disk('public')->delete($image->image_path);
+//                $image->delete();
+//            }
+//
+//            // حذف المنتج
+//            $product->delete();
+//        }
+//        return redirect()->back();
+//    }
 }

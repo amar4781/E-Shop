@@ -28,6 +28,6 @@ Route::get('/admin', function () {
 Route::resource('products',ProductController::class);
 
 Route::get('products/view/{id}',[ProductController::class,'view'])->name('products.view');
-Route::get('products/delete/all',[ProductController::class,'deleteAll'])->name('products.delete.all');
+//Route::get('products/delete/all',[ProductController::class,'deleteAll'])->name('products.delete.all');
 
 
