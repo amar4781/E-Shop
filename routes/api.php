@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\authController;
+use App\Http\Controllers\Api\newProductController;
+use App\Http\Controllers\Api\oneProductController;
+use App\Http\Controllers\Api\photoController;
+use App\Http\Controllers\Api\productController;
+use App\Http\Controllers\Api\userController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +20,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::controller(authController::class)->group(function(){
+    Route::post('register','register');
+    Route::post('login','login');
 });
+
+Route::get('/products', productController::class);
+Route::get('/products/{id}', oneProductController::class);
+Route::post('/product', newProductController::class);
+
+
+Route::get('/users', userController::class);
+
+
+Route::get('/photos', photoController::class);
+Route::get('/photos/{id}', photoController::class);
+
+
+
