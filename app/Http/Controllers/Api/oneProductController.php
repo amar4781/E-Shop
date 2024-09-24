@@ -17,7 +17,7 @@ class oneProductController extends Controller
     {
         $product = Product::find($id);
         if ($product){
-            return ApiResponse::sendResponse(200,'Product Retrieved',new ProductResource($product));
+            return ApiResponse::sendResponse(200,'Product Retrieved',$product);
         }
         return ApiResponse::sendResponse(200,'Product Not Found',[]);
 
