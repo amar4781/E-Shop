@@ -60,7 +60,10 @@
                             <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="100">
                         </div>
 
-
+                        <div class="mb-3">
+                            <label for="body">Change Images :</label>
+                            <input type="file" name="images[]" id="body" value="{{$product->image}}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" multiple>
+                        </div>
 
                         <div class="mb-3">
                             <label for="body">Gender :</label><br>

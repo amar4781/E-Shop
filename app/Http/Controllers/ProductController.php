@@ -93,13 +93,15 @@ class ProductController extends Controller
     {
         $product = Product::findorFail($id);
 
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+//        $request->validate([
+//            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//        ]);
+
+
 
         if ($request->hasFile('image')) {
             $imageName = $request->image->getClientOriginalName();
-            $request->image->move(public_path('image'), $imageName);
+            $request->image->move(public_path('images'), $imageName);
             $imagePath = 'images/' . $imageName;
         }
 
@@ -110,7 +112,7 @@ class ProductController extends Controller
             'brand' => $request->brand,
             'movement' => $request->movement,
             'price' => $request->price,
-            'image'=>$imagePath,
+            'image'=>$imagePath ?? $product->image,
             'gender' => $request->gender,
             'size' => $request->size,
         ]);

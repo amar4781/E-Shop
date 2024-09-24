@@ -37,6 +37,7 @@
                             <th>Movement</th>
                             <th>Price</th>
                             <th>Image</th>
+                            <th>Gallery</th>
                             <th>Gender</th>
                             <th>Size</th>
                             <th>Created At</th>
