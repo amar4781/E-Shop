@@ -54,6 +54,7 @@
                                 <td>{{$product->brand}}</td>
                                 <td>{{$product->movement}}</td>
                                 <td>{{$product->price}}</td>
+                                <td><img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="100"></td>
                                 <td>
                                     @foreach($product->images as $image)
                                         <img src="{{ asset('storage/' . $image->image_path) }}" alt="Product Image" width="100">

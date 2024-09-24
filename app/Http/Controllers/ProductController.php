@@ -31,6 +31,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'image/' . $imageName;
+        }
 
         $product = Product::create([
             'name'=>$request->name,
@@ -39,13 +48,14 @@ class ProductController extends Controller
             'brand'=>$request->brand,
             'movement'=>$request->movement,
             'price'=>$request->price,
+            'image'=>$imagePath,
             'gender'=>$request->gender,
             'size'=>$request->size,
         ]);
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $path = $image->store('images', 'public');
+                $path = $image->store('gallery', 'public');
 
                 ProductImage::create([
                     'product_id' => $product->id,
@@ -83,6 +93,16 @@ class ProductController extends Controller
     {
         $product = Product::findorFail($id);
 
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'images/' . $imageName;
+        }
+
         $product->update([
             'name' => $request->name,
             'details' => $request->details,
@@ -90,6 +110,7 @@ class ProductController extends Controller
             'brand' => $request->brand,
             'movement' => $request->movement,
             'price' => $request->price,
+            'image'=>$imagePath,
             'gender' => $request->gender,
             'size' => $request->size,
         ]);
@@ -101,7 +122,7 @@ class ProductController extends Controller
             }
 
             foreach ($request->file('images') as $image) {
-                $path = $image->store('images', 'public');
+                $path = $image->store('gallery', 'public');
                 ProductImage::create([
                     'product_id' => $product->id,
                     'image_path' => $path,
@@ -136,6 +157,18 @@ class ProductController extends Controller
         $product = Product::findorFail($id);
         return view('products.view',compact('product'));
     }
+
+    public function deleteImage($id)
+    {
+
+        $image = ProductImage::findOrFail($id);
+
+        Storage::delete('public/' . $image->image_path);
+        $image->delete();
+
+        return redirect()->back();
+    }
+
 
 //    public function deleteAll()
 //    {

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('brand');
             $table->string('movement');
             $table->float('price');
+            $table->string('image');
             $table->string('gender');
             $table->integer('size');
             $table->timestamps();

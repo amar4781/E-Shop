@@ -54,6 +54,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="body">Image :</label>
+                            <input type="file" name="image" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        </div>
+
+                        <div class="mb-3">
                             <label for="body">Upload Images :</label>
                             <input type="file" name="images[]" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" multiple>
                         </div>

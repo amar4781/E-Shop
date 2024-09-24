@@ -55,9 +55,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="body">Upload Images :</label>
-                            <input type="file" name="images[]" id="body" value="{{$product->image}}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" multiple>
+                            <label for="body">Change Image :</label>
+                            <input type="file" name="image" id="body" value="{{$product->image}}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="100">
                         </div>
+
+
 
                         <div class="mb-3">
                             <label for="body">Gender :</label><br>
@@ -76,6 +79,19 @@
                         </div>
 
                     </form>
+
+                    <div class="mb-3">
+                        @foreach($product->images as $image)
+                            <div style="display: inline-block; margin-right: 10px;">
+                                <img src="{{ asset('storage/' . $image->image_path) }}" alt="Product Image" width="100px">
+                                <form action="{{ route('image.delete', $image->id) }}" method="POST" style="display: inline-block;">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

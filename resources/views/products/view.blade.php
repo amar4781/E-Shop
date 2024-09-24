@@ -56,6 +56,11 @@
 
                         <div class="mb-3">
                             <label for="body">Image :</label><br>
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="100">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="body">Gallery :</label><br>
                             @foreach($product->images as $image)
                                 <img src="{{ asset('storage/' . $image->image_path) }}" alt="Product Image" width="100">
                             @endforeach
