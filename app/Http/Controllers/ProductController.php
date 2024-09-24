@@ -32,7 +32,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required',
+            'details' => 'required',
+            'description' => 'required',
+            'brand' => 'required',
+            'movement' => 'required',
+            'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gender' => 'required',
+            'size' => 'required',
         ]);
 
         if ($request->hasFile('image')) {
@@ -93,10 +101,17 @@ class ProductController extends Controller
     {
         $product = Product::findorFail($id);
 
-//        $request->validate([
-//            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-//        ]);
-
+        $request->validate([
+            'name' => 'required',
+            'details' => 'required',
+            'description' => 'required',
+            'brand' => 'required',
+            'movement' => 'required',
+            'price' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gender' => 'required',
+            'size' => 'required',
+        ]);
 
 
         if ($request->hasFile('image')) {

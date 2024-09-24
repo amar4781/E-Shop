@@ -25,43 +25,67 @@
                         @csrf
                         <div class="mb-3">
                             <label for="title">Name :</label>
-                            <input type="text" name="name" id="title" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="text" name="name" id="title" value="{{ old('name') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Details :</label>
-                            <input type="text" name="details" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="text" name="details" id="body" value="{{ old('details') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('details')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Description :</label>
-                            <input type="text" name="description" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="text" name="description" id="body" value="{{ old('description') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Brand :</label>
-                            <input type="text" name="brand" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="text" name="brand" id="body" value="{{ old('brand') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('brand')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Movement :</label>
-                            <input type="text" name="movement" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="text" name="movement" id="body" value="{{ old('movement') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('movement')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Price :</label>
-                            <input type="number" name="price" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="number" name="price" id="body" value="{{ old('price') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('price')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Image :</label>
                             <input type="file" name="image" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('image')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Upload Images :</label>
                             <input type="file" name="images[]" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" multiple>
                         </div>
+                        @error('images[]')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Gender :</label><br>
@@ -70,11 +94,18 @@
                             <input type="radio" id="female" name="gender" value="female">
                             <label for="female">female</label><br>
                         </div>
+                        @error('gender')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="body">Size :</label>
-                            <input type="number" name="size" id="body" value="" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="number" name="size" id="body" value="{{ old('size') }}" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
+                        @error('size')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+
                         <div class="mb-3">
                             <button type="submit" name="submit" class="btn btn-success">Submit</button>
                         </div>
