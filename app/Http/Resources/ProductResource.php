@@ -25,7 +25,7 @@ class ProductResource extends JsonResource
             'gender'=>$this->gender,
             'size'=>$this->size,
             'images' => $this->images->map(function ($gallery) {
-                return url( $gallery->image_path);
+                return url('storage/' . $gallery->image_path);
             })->toArray(),
 
         ];
