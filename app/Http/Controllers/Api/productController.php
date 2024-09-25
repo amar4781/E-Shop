@@ -24,7 +24,7 @@ class productController extends Controller
 
         $products = Product::all();
         if (count($products)>0) {
-        return ApiResponse::sendResponse(200,'Products Retrieved Successfully',$products);
+        return ApiResponse::sendResponse(200,'Products Retrieved Successfully', ProductResource::collection($products));
     }
     return ApiResponse::sendResponse(200,'Products Not Found',[]);
 
