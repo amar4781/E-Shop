@@ -64,4 +64,9 @@ class authController extends Controller
             return ApiResponse::sendResponse(401,"User Credentials Does't Exits",[]);
         }
     }
+
+    public function logout(Request $request){
+        $request->user()->currentAccessToken()->delete();
+        return ApiResponse::sendResponse(200,'Logged Out Successfully',[]);
+    }
 }
