@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\authController;
+use App\Http\Controllers\Api\categoryController;
 use App\Http\Controllers\Api\newProductController;
 use App\Http\Controllers\Api\oneProductController;
 use App\Http\Controllers\Api\photoController;
@@ -40,6 +41,9 @@ Route::get('/users', userController::class);
 
 Route::get('/photos', photoController::class);
 Route::get('/photos/{id}', photoController::class);
+
+
+Route::get('category/{id}', categoryController::class);
 
 
 
