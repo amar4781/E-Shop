@@ -38,7 +38,7 @@ class ProductController extends Controller
             'brand' => 'required',
             'movement' => 'required',
             'price' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'gender' => 'required',
             'size' => 'required',
         ]);
@@ -108,7 +108,7 @@ class ProductController extends Controller
             'brand' => 'required',
             'movement' => 'required',
             'price' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image',
             'gender' => 'required',
             'size' => 'required',
         ]);
